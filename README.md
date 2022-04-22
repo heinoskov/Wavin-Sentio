@@ -214,39 +214,7 @@ sensor:
     address: 206
     filters:
       - multiply: 0.01 
-      
-## Channel 3
-  - platform: modbus_controller
-    modbus_controller_id: sentio_modbus_controller
-    name: "${channel_3} mode"
-    id: mode_channel_3
-    register_type: read
-    address: 302
-    
-  - platform: modbus_controller
-    modbus_controller_id: sentio_modbus_controller
-    name: "${channel_3} temperatur"
-    id: temperatur_channel_3
-    unit_of_measurement: °C
-    accuracy_decimals: 1
-    device_class: temperature
-    register_type: read
-    address: 304
-    filters:
-      - multiply: 0.01
-      
-  - platform: modbus_controller
-    modbus_controller_id: sentio_modbus_controller
-    name: "${channel_3} luftfugtighed"
-    id: luftfugtighed_channel_3
-    unit_of_measurement: '%'
-    accuracy_decimals: 1
-    device_class: humidity
-    register_type: read
-    address: 306
-    filters:
-      - multiply: 0.01 
-      
+            
 ## Channel 4
   - platform: modbus_controller
     modbus_controller_id: sentio_modbus_controller
@@ -502,6 +470,38 @@ sensor:
     address: 1106
     filters:
       - multiply: 0.01   
+
+## Channel 12
+  - platform: modbus_controller
+    modbus_controller_id: sentio_modbus_controller
+    name: "${channel_12} mode"
+    id: mode_channel_12
+    register_type: read
+    address: 1202
+    
+  - platform: modbus_controller
+    modbus_controller_id: sentio_modbus_controller
+    name: "${channel_12} temperatur"
+    id: temperatur_channel_12
+    unit_of_measurement: °C
+    accuracy_decimals: 1
+    device_class: temperature
+    register_type: read
+    address: 1204
+    filters:
+      - multiply: 0.01
+      
+  - platform: modbus_controller
+    modbus_controller_id: sentio_modbus_controller
+    name: "${channel_12} luftfugtighed"
+    id: luftfugtighed_channel_12
+    unit_of_measurement: '%'
+    accuracy_decimals: 1
+    device_class: humidity
+    register_type: read
+    address: 1206
+    filters:
+      - multiply: 0.01 
       
 #########################
 ### SETPOINT REGISTERS ##
@@ -532,21 +532,6 @@ number:
     max_value: 30.0
     step: 0.5
     address: 219
-    force_new_range: true
-    use_write_multiple: true 
-    write_lambda: "payload = modbus_controller::float_to_payload(x*100, modbus_controller::SensorValueType::U_WORD); return x;"
-    lambda: "return x*0.01;" 
-    internal: true
-
-## Channel 3    
-  - platform: modbus_controller
-    modbus_controller_id: sentio_modbus_controller
-    name: "${channel_3} temperatur setpunkt"
-    id: temperatur_setpunkt_channel_3
-    min_value: 10.0
-    max_value: 30.0
-    step: 0.5
-    address: 319
     force_new_range: true
     use_write_multiple: true 
     write_lambda: "payload = modbus_controller::float_to_payload(x*100, modbus_controller::SensorValueType::U_WORD); return x;"
@@ -673,6 +658,21 @@ number:
     lambda: "return x*0.01;" 
     internal: true    
 
+## Channel 12
+  - platform: modbus_controller
+    modbus_controller_id: sentio_modbus_controller
+    name: "${channel_12} temperatur setpunkt"
+    id: temperatur_setpunkt_channel_12
+    min_value: 10.0
+    max_value: 30.0
+    step: 0.5
+    address: 1219
+    force_new_range: true
+    use_write_multiple: true 
+    write_lambda: "payload = modbus_controller::float_to_payload(x*100, modbus_controller::SensorValueType::U_WORD); return x;"
+    lambda: "return x*0.01;" 
+    internal: true    
+
 #########################
 #### CLIMATE ENTITIES ###
 #########################
@@ -689,12 +689,6 @@ climate:
     current_temp_sensor_id: temperatur_channel_2
     target_temp_sensor_id: temperatur_setpunkt_channel_2
     mode_select_id: mode_channel_2
-    
-  - platform: sentio
-    name: ${channel_3}
-    current_temp_sensor_id: temperatur_channel_3
-    target_temp_sensor_id: temperatur_setpunkt_channel_3
-    mode_select_id: mode_channel_3
 
   - platform: sentio
     name: ${channel_4}
@@ -742,6 +736,12 @@ climate:
     name: ${channel_11}
     current_temp_sensor_id: temperatur_channel_11
     target_temp_sensor_id: temperatur_setpunkt_channel_11
-    mode_select_id: mode_channel_11      
+    mode_select_id: mode_channel_11   
+    
+  - platform: sentio
+    name: ${channel_12}
+    current_temp_sensor_id: temperatur_channel_12
+    target_temp_sensor_id: temperatur_setpunkt_channel_12
+    mode_select_id: mode_channel_12   
 
 ```
