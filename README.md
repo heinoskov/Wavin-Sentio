@@ -50,18 +50,18 @@ substitutions:
   update_interval: 10s
   
   # CHANNEL ID´S
-  channel_1:  Bryggers
-  channel_2:  Entré
-  channel_3:  Ellens værelse
-  channel_4:  Arnes værelse
-  channel_5:  Mors kontor
-  channel_6:  Stue/KA
-  channel_7:  Bad voksne
-  channel_8:  Soveværelse
-  channel_9:  Bad børn
-  channel_10: <Unused>
-  channel_11: Fars kontor
-  channel_12: <Unused>
+  channel_1:  Utility Room
+  channel_2:  Kitchen
+  channel_3:  <Unused>
+  channel_4:  Master Bedroom
+  channel_5:  Master Bathroom
+  channel_6:  Living Room
+  channel_7:  Office
+  channel_8:  Guest Bathroom
+  channel_9:  Corridor
+  channel_10: Johanne's Room
+  channel_11: Guest Room
+  channel_12: Entrance
   channel_13: <Unused>
   channel_14: <Unused>
   channel_15: <Unused>
